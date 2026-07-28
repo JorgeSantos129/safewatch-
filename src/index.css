@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --safe-bg: #0b1220;
+  color-scheme: dark;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--safe-bg);
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* Respect device safe areas (notches / home indicator) */
+.pt-safe { padding-top: env(safe-area-inset-top); }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Hide scrollbars on horizontal chip rows but keep scrolling */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Prevent iOS zoom on input focus (font-size >= 16px) */
+input, select, textarea { font-size: 16px; }
+
+@keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.animate-fadein { animation: fadein .22s ease-out; }
+
+@keyframes sheetup { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.animate-sheetup { animation: sheetup .28s cubic-bezier(.32,.72,0,1); }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+}
